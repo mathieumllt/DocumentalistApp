@@ -66,4 +66,27 @@
   border-color: #130f40;
 }
 
+.card {
+  transition: 0.2s;
+}
+
+.card:hover {
+  -webkit-box-shadow: 2px 2px 10px -1px rgba(0,0,0,0.29);
+  -moz-box-shadow: 2px 2px 10px -1px rgba(0,0,0,0.29);
+  box-shadow: 2px 2px 10px -1px rgba(0,0,0,0.10);
+}
+
+.card-header {
+  border-bottom: unset;
+}
+
+.card-header {
+  border-bottom-width: unset;
+}
+
+.card-footer {
+  border-top: unset;
+}
+
+
 
