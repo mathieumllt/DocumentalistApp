@@ -13,3 +13,52 @@
  *= require app
  *= require_self
  */
+ 
+.btn-group-lg>.btn,.btn-lg {
+  padding: 0.50rem 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  border-radius: .2rem;
+}
+
+.btn-outline-secondary {
+  color: #4834d4;
+  border-color: #4834d4;
+}
+
+.btn-outline-secondary:hover {
+  border-color: #4834d4;
+  background: #4834d4;
+}
+
+.sidebar,.sidebar-content {
+  background: #130f40;
+}
+
+.sidebar-link .feather,.sidebar-link svg {
+  color: #fff;
+}
+
+.sidebar-link,a.sidebar-link {
+  color: #fff;
+  background: #130f40;
+}
+
+.sidebar-item.active .sidebar-link:hover,.sidebar-link:hover {
+  color: #fff;
+  background: #0c0931;
+}
+
+.badge {
+  color: #000;
+}
+
+.badge-primary {
+  background-color: #f9ca24;
+}
+
+.sidebar-brand .feather,.sidebar-brand svg {
+  color: #f9ca24;
+}
+
+
