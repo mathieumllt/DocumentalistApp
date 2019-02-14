@@ -14,5 +14,8 @@
 
 FactoryBot.define do
   factory :student do
+    first_name { Faker::Name.name }
+    last_name { Faker::Name.last_name }
+    birth_date { Faker::Date.birthday(10, 15) }
   end
 end
