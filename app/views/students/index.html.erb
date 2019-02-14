@@ -17,12 +17,12 @@
 							</thead>
 							<tbody>
 							  <% @students.each do |i| %>
-                  <tr>
-                    <td><%= i.first_name %></td>
-                    <td><%= i.last_name %></td>
-                    <td><%= i.birth_date %></td>
-                  </tr>
-                <% end %>
+                  				<tr>
+                    				<td><%= i.first_name %></td>
+                    				<td><%= i.last_name %></td>
+                    				<td><%= i.birth_date %></td>
+                  				</tr>
+                			  <% end %>
 							</tbody>
 						</table>
 						<%= will_paginate @students, list_classes: %w(pagination justify-content-center) %>
