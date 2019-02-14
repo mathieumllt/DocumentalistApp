@@ -13,6 +13,6 @@
 #
 
 class Student < ApplicationRecord
-  validates :first_name, length: { in: 4..40 }
-  validates :last_name, length: { in: 4..40 }
+  validates :first_name, length: { in: 2..40 }
+  validates :last_name, length: { in: 2..40 }
 end
