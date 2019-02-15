@@ -14,18 +14,23 @@
 									<th>Nom</th>
 									<th>Date de naissance</th>
 									<th>Détails</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
 							  <% @students.each do |student| %>
-                  				<tr>
-                    				<td><%= student.first_name %></td>
-                    				<td><%= student.last_name %></td>
-                    				<td><%= student.birth_date %></td>
-                    				<td><%= link_to "Voir", student_path(student.id), class: "btn btn-sm btn-outline-primary" %></td>
-
-                  				</tr>
-                			  <% end %>
+          				<tr>
+            				<td><%= student.first_name %></td>
+            				<td><%= student.last_name %></td>
+            				<td><%= student.birth_date %></td>
+            				<td><%= link_to "Voir", student_path(student.id), class: "btn btn-sm btn-outline-primary" %></td>
+										<td>
+											<%= link_to student_path(student), method: :delete, data: { confirm: "Cette action est irréversible, êtes vous sur ?"} do %>
+												<i class="far fa-trash-alt"></i>
+											<% end %>
+										</td>
+									</tr>
+        			  <% end %>
 							</tbody>
 						</table>
 						<%= will_paginate @students, list_classes: %w(pagination justify-content-center) %>
