@@ -21,6 +21,9 @@ Rails/Output:
 Style/DateTime:
   Enabled: true
 
+Layout/IndentationConsistency:
+  EnforcedStyle: rails
+
 Metrics/LineLength:
   Max: 120
 
