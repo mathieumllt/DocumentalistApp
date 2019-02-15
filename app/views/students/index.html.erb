@@ -3,8 +3,13 @@
 		<div class="row">
 			<div class="col-12 col-lg-8">
 				<div class="card animated fadeIn">
-					<div class="card-header">
+					<div class="card-header d-flex justify-content-between">
 						<h1 class="h3 mt-2">Liste des étudiants</h1>
+						<div>
+							<%= link_to new_student_path, class: "btn btn-primary btn-lg" do %>
+								<i class="fas fa-user-plus"></i> Ajouter un élève dans la liste
+							<% end %>
+						</div>
 					</div>
 					<div class="card-body">
 						<table id="datatables-basic" class="table table-striped" style="width:100%">
@@ -14,18 +19,11 @@
 									<th>Nom</th>
 									<th>Date de naissance</th>
 									<th>Détails</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
-							  <% @students.each do |student| %>
-                  				<tr>
-                    				<td><%= student.first_name %></td>
-                    				<td><%= student.last_name %></td>
-                    				<td><%= student.birth_date %></td>
-                    				<td><%= link_to "Voir", student_path(student.id), class: "btn btn-sm btn-outline-primary" %></td>
-
-                  				</tr>
-                			  <% end %>
+							  <%= render @students %>
 							</tbody>
 						</table>
 						<%= will_paginate @students, list_classes: %w(pagination justify-content-center) %>
