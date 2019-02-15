@@ -36,3 +36,5 @@ spec/examples.txt
 coverage
 
 .env
+
+.DS_Store

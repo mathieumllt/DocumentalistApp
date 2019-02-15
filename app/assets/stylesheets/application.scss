@@ -1,0 +1,92 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require app
+ *= require_self
+ */
+ 
+.btn-group-lg>.btn,.btn-lg {
+  padding: 0.50rem 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  border-radius: .2rem;
+}
+
+.btn-outline-secondary {
+  color: #4834d4;
+  border-color: #4834d4;
+}
+
+.btn-outline-secondary:hover {
+  border-color: #4834d4;
+  background: #4834d4;
+}
+
+.sidebar,.sidebar-content {
+  background: #130f40;
+}
+
+.sidebar-link .feather,.sidebar-link svg {
+  color: #fff;
+}
+
+.sidebar-link,a.sidebar-link {
+  color: #fff;
+  background: #130f40;
+}
+
+.sidebar-item.active .sidebar-link:hover,.sidebar-link:hover {
+  color: #fff;
+  background: #0c0931;
+}
+
+.badge {
+  color: #000;
+}
+
+.badge-primary {
+  background-color: #f9ca24;
+}
+
+.sidebar-brand .feather,.sidebar-brand svg {
+  color: #f9ca24;
+}
+
+.page-item.active .page-link {
+  background-color: #130f40;
+  border-color: #130f40;
+}
+
+.card {
+  transition: 0.2s;
+}
+
+.card:hover {
+  -webkit-box-shadow: 2px 2px 10px -1px rgba(0,0,0,0.29);
+  -moz-box-shadow: 2px 2px 10px -1px rgba(0,0,0,0.29);
+  box-shadow: 2px 2px 10px -1px rgba(0,0,0,0.10);
+}
+
+.card-header {
+  border-bottom: unset;
+}
+
+.card-header {
+  border-bottom-width: unset;
+}
+
+.card-footer {
+  border-top: unset;
+}
+
+
+
