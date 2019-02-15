@@ -1,17 +1,33 @@
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
+  before_action :set_student, only: %i[show edit update destroy]
+
   def index
     @students = Student.paginate(page: params[:page])
   end
 
-  def show
-    @student = Student.find(params[:id])
+  def show; end
+
+  def edit; end
+
+  def update
+    @student.update(student_params)
+    redirect_to student_path(@student)
   end
 
   def destroy
-    @student = Student.find(params[:id])
     @student.destroy
     redirect_to students_path
   end
+
+  private
+
+    def set_student
+      @student = Student.find(params[:id])
+    end
+
+    def student_params
+      params.require(:student).permit(:first_name, :last_name, :birth_date)
+    end
 end
