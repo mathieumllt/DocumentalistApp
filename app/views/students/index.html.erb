@@ -3,8 +3,13 @@
 		<div class="row">
 			<div class="col-12 col-lg-8">
 				<div class="card animated fadeIn">
-					<div class="card-header">
+					<div class="card-header d-flex justify-content-between">
 						<h1 class="h3 mt-2">Liste des étudiants</h1>
+						<div>
+							<%= link_to new_student_path, class: "btn btn-primary btn-lg" do %>
+								<i class="fas fa-user-plus"></i> Ajouter un élève dans la liste
+							<% end %>
+						</div>
 					</div>
 					<div class="card-body">
 						<table id="datatables-basic" class="table table-striped" style="width:100%">

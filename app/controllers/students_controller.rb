@@ -3,6 +3,16 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
 
+  def new
+    @student = Student.new
+  end
+
+  def create
+    @student = Student.new(student_params)
+    @student.save
+    redirect_to student_path(@student)
+  end
+
   def index
     @students = Student.paginate(page: params[:page])
   end
