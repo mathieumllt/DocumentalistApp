@@ -1,98 +1,98 @@
 <main class="content">
-		<div class="container-fluid p-0">
-			<div class="row">
-				<div class="col-12 col-lg-8">
-					<div class="card animated fadeIn">
-						<div class="card-header">
-							<h1 class="h3 mt-2">🎓  <%= @student.first_name %> <%= @student.last_name %></h1>
-						</div>
-						<div class="card-body">						
-							<table id="datatables-basic" class="table table-striped" style="width:100%">
-								<thead class="thead-dark">
-										<th><u>Informations générales:</u></th>
-										<th></th>
-										<th></th>
-								</thead>
-								<thead>
-									<tr>
-										<th>Classe</th>
-										<th>Date d'intégration</th>
-										<th>Date de naissance</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>5ème B</td>
-										<td><%= @student.created_at.to_date %></td>
-										<td><%= @student.birth_date %></td>
-									</tr>
-								</tbody>
-								<thead class="thead-dark">
-									
-										<th><u>Séances:</u></th>
-										<th></th>
-										<th></th>
-								</thead>
-								<thead>
-									<tr>
-										<th>Nombre de séances</th>
-										<th>Absences</th>
-										<th>Dont justifiées</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>11</td>
-										<td>4</td>
-										<td>3</td>
-									</tr>
-								</tbody>
-								<thead class="thead-dark">
-									
-										<th><u>Livres:</u></th>
-										<th></th>
-										<th></th>
-								</thead>
-								<thead>
-									<tr>
-										<th>Total emprunts</th>
-										<th>En cours</th>
-										<th>En retard</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>7</td>
-										<td>1</td>
-										<td>0</td>
-									</tr>
-								</tbody>
-								<thead class="thead-dark">
-									
-										<th><u>Compétences:</u></th>
-										<th></th>
-										<th></th>
-								</thead>
-								<thead>
-									<tr>
-										<th>Total sur la session</th>
-										<th>Minimum à acquérir</th>
-										<th>Détails</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>17</td>
-										<td>25</td>
-										<td><button class="btn btn-sm btn-outline-primary disabled">voir</button></td>
-									</tr>
-								</tbody>
-							</table>
-						<div class="card-footer">							
-							<button class="btn btn-lg btn-primary mt-2">Modifier les informations</button>
+	<div class="container-fluid p-0">
+		<div class="row">
+			<div class="col-12 col-lg-8">
+				<div class="card animated fadeIn">
+					<div class="card-header d-flex justify-content-between">
+						<h1 class="h3 mt-2">🎓  <%= @student.first_name %> <%= @student.last_name %></h1>
+						<div>
+							<%= link_to edit_student_path(@student), class: "btn btn-primary btn-lg" do %>
+								<i class="fas fa-user-edit"></i> Editer le profil
+							<% end %>
 						</div>
 					</div>
+					<div class="card-body">
+						<table id="datatables-basic" class="table table-striped" style="width:100%">
+							<thead class="thead-dark">
+									<th><u>Informations générales:</u></th>
+									<th></th>
+									<th></th>
+							</thead>
+							<thead>
+								<tr>
+									<th>Classe</th>
+									<th>Date d'intégration</th>
+									<th>Date de naissance</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>5ème B</td>
+									<td><%= @student.created_at.to_date %></td>
+									<td><%= @student.birth_date %></td>
+								</tr>
+							</tbody>
+							<thead class="thead-dark">
+									<th><u>Séances:</u></th>
+									<th></th>
+									<th></th>
+							</thead>
+							<thead>
+								<tr>
+									<th>Nombre de séances</th>
+									<th>Absences</th>
+									<th>Dont justifiées</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>11</td>
+									<td>4</td>
+									<td>3</td>
+								</tr>
+							</tbody>
+							<thead class="thead-dark">
+									<th><u>Livres:</u></th>
+									<th></th>
+									<th></th>
+							</thead>
+							<thead>
+								<tr>
+									<th>Total emprunts</th>
+									<th>En cours</th>
+									<th>En retard</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>7</td>
+									<td>1</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+							<thead class="thead-dark">
+									<th><u>Compétences:</u></th>
+									<th></th>
+									<th></th>
+							</thead>
+							<thead>
+								<tr>
+									<th>Total sur la session</th>
+									<th>Minimum à acquérir</th>
+									<th>Détails</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>17</td>
+									<td>25</td>
+									<td><button class="btn btn-sm btn-outline-primary">voir</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</div> <!-- ROW -->
-		</div>
-	</main>
+			</div>
+		</div> <!-- ROW -->
+	</div>
+</main>
