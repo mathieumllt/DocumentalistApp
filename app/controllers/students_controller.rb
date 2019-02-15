@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
   end
 
   def index
-    @students = Student.paginate(page: params[:page])
+    @students = Student.order(updated_at: :desc).paginate(page: params[:page])
   end
 
   def show; end
