@@ -65,6 +65,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
+    csv (3.0.4)
     database_cleaner (1.7.0)
     devise (4.6.1)
       bcrypt (~> 3.0)
@@ -274,6 +275,7 @@ DEPENDENCIES
   annotate (~> 2.7, >= 2.7.4)
   bootsnap (>= 1.1.0)
   coffee-rails (~> 4.2)
+  csv
   database_cleaner (~> 1.7)
   devise
   dotenv-rails

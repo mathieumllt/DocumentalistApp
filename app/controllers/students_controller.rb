@@ -31,13 +31,16 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
-  private
+  def import
+    Student.import(params[:file])
+    redirect_to root_url, notice: "Activity Data imported!"
+  end
 
-    def set_student
-      @student = Student.find(params[:id])
-    end
+  def set_student
+    @student = Student.find(params[:id])
+  end
 
-    def student_params
-      params.require(:student).permit(:first_name, :last_name, :birth_date)
-    end
+  def student_params
+    params.require(:student).permit(:first_name, :last_name, :birth_date)
+  end
 end

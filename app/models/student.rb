@@ -13,6 +13,13 @@
 #
 
 class Student < ApplicationRecord
+  require 'csv'
   validates :first_name, presence: true, length: { in: 2..40 }
   validates :last_name, presence: true, length: { in: 2..40 }
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Student.create! row.to_hash
+    end
+  end
 end
