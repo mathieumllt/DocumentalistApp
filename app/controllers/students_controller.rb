@@ -1,16 +1,48 @@
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
-  def index
-    @students = Student.paginate(page: params[:page])
+  before_action :set_student, only: %i[show edit update destroy]
+
+  def new
+    @student = Student.new
   end
 
-  def show
-    @student = Student.find(params[:id])
+  def create
+    @student = Student.new(student_params)
+    @student.save
+    redirect_to student_path(@student)
   end
+
+  def index
+    @students = Student.order(updated_at: :desc).paginate(page: params[:page])
+  end
+
+  def show; end
+
+  def edit; end
+
+  def update
+    @student.update(student_params)
+    redirect_to student_path(@student)
+  end
+
+  def destroy
+    @student.destroy
+    redirect_to students_path
+  end
+
 
   def import
     Student.import(params[:file])
     redirect_to root_url, notice: "Activity Data imported!"
   end
+
+
+    def set_student
+      @student = Student.find(params[:id])
+    end
+
+    def student_params
+      params.require(:student).permit(:first_name, :last_name, :birth_date)
+    end
 end
