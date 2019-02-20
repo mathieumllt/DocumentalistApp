@@ -15,7 +15,6 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.order(updated_at: :desc).paginate(page: params[:page])
-    TestSidekiqJob.perform_later
   end
 
   def show; end
