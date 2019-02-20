@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_144207) do
+ActiveRecord::Schema.define(version: 2019_02_20_194710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "csv_imports", force: :cascade do |t|
+    t.string "url", null: false
+    t.integer "total_lines", default: 0
+    t.integer "remaining_lines", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "import_errors", force: :cascade do |t|
+    t.string "name"
+    t.bigint "csv_import_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["csv_import_id"], name: "index_import_errors_on_csv_import_id"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string "first_name", null: false
