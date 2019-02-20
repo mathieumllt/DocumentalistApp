@@ -13,5 +13,6 @@
 
 FactoryBot.define do
   factory :import_error do
+    name { Faker::Ancient.primordial }
   end
 end

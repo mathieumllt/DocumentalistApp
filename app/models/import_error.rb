@@ -12,5 +12,5 @@
 #
 
 class ImportError < ApplicationRecord
-  belongs_to :csv_import
+  belongs_to :csv_import, optional: true
 end

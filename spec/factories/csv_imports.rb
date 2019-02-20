@@ -14,5 +14,9 @@
 
 FactoryBot.define do
   factory :csv_import do
+    lines = Faker::Number.between(1, 1000)
+    url { Faker::Internet.url }
+    total_lines { lines }
+    remaining_lines { lines }
   end
 end
