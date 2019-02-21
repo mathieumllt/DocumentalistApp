@@ -32,8 +32,8 @@ class StudentsController < ApplicationController
   end
 
   def import
-    Student.import(params[:file])
-    redirect_to root_url, notice: "Activity Data imported!"
+    Student.import(params[:students_csv])
+    redirect_to students_path, notice: "Activity Data imported!"
   end
 
   def set_student
