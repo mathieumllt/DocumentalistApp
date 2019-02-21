@@ -12,5 +12,23 @@
 require 'rails_helper'
 
 RSpec.describe List, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject do
+    build(:list)
+  end
+
+  describe 'it is creatable' do
+    let(:list) { create(:list) }
+
+    it { expect(list.id).not_to be_nil }
+  end
+
+  describe 'Database' do
+    it { is_expected.to have_db_column(:id).of_type(:integer) }
+  end
+
+  describe 'association' do
+    let(:list) { create(:list) }
+
+    it { expect(list.students_csv).not_to be_nil }
+  end
 end
