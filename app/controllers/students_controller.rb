@@ -32,7 +32,8 @@ class StudentsController < ApplicationController
   end
 
   def import
-    Student.import(params[:students_csv])
+    CsvManager::ImportStudent.check(params[:students_csv])
+    CsvManager::ImportStudent.add_to_db(params[:students_csv])
     redirect_to students_path, notice: "Activity Data imported!"
   end
 
