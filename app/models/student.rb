@@ -17,9 +17,10 @@ class Student < ApplicationRecord
   validates :first_name, presence: true, length: { in: 2..40 }
   validates :last_name, presence: true, length: { in: 2..40 }
 
+  extend CsvImport
+
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-      Student.create! row.to_hash
-    end
+    check(file)
+    add_to_db(file)
   end
 end
