@@ -1,9 +1,8 @@
-# Parse a csv file and create students when if they don't already exist
+# frozen_string_literal: true
 
 module CsvManager
   class ImportStudent
-    def self.check(file)
-    end
+    def self.check(file); end
 
     def self.add_to_db(file)
       CSV.foreach(file.path, headers: true) do |row|
