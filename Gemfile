@@ -5,8 +5,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 File.read('./.ruby-version')
 
+gem "aws-sdk-s3", require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
+gem 'csv'
 gem 'devise'
 gem 'faker', '~> 1.8', '>= 1.8.7'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
@@ -17,6 +19,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1', '>= 5.2.1.1'
 gem 'sass-rails', '~> 5.0'
+gem 'sidekiq', '~> 5.2.5'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate', '~>3.1.6'
