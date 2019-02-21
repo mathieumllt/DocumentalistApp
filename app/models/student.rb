@@ -13,16 +13,6 @@
 #
 
 class Student < ApplicationRecord
-  has_one_attached :students_csv
-
-  require 'csv'
   validates :first_name, presence: true, length: { in: 2..40 }
   validates :last_name, presence: true, length: { in: 2..40 }
-
-  extend CsvImport
-
-  def self.import(file)
-    check(file)
-    add_to_db(file)
-  end
 end
