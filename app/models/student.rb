@@ -13,6 +13,8 @@
 #
 
 class Student < ApplicationRecord
+  has_one_attached :students_csv
+
   require 'csv'
   validates :first_name, presence: true, length: { in: 2..40 }
   validates :last_name, presence: true, length: { in: 2..40 }

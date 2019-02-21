@@ -30,10 +30,11 @@
 					</div>
 					<div><h4>Import that data!</h4>
 						<%= form_tag import_students_path, multipart: true do %>
-							<%= file_field_tag :file %>
+							<%= file_field_tag :students_csv %>
 							<%= submit_tag "Import CSV" %>
 						<% end %>
 					</div>
+
 				</div>
 			</div>
 		</div>
