@@ -32,8 +32,9 @@ class StudentsController < ApplicationController
   end
 
   def import
+    List.create
     CsvManager::ImportStudent.check(params[:students_csv])
-    CsvManager::ImportStudent.add_to_db(params[:students_csv])
+    ImportCsvJob.perform_later ActiveStorage::Blob.service.send(:path_for, List.last.students_csv.key)
     redirect_to students_path, notice: "Activity Data imported!"
   end
 
