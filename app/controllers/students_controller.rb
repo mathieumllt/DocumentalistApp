@@ -33,7 +33,7 @@ class StudentsController < ApplicationController
 
   def import
     CsvManager::ImportStudent.check(params[:students_csv])
-    CsvManager::ImportStudent.add_to_db(params[:students_csv])
+    CsvManager::ImportStudent.import_students(params[:students_csv])
     flash[:notice] = "Import en cours, actualisez dans quelques secondes pour visualiser les changements"
     redirect_to students_path
   end
