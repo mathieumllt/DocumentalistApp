@@ -4,6 +4,8 @@ class ImportCsvJob < ApplicationJob
   queue_as :default
 
   def perform(row)
-    Student.create! row
+    row.each do |line|
+      Student.create! line
+    end
   end
 end
