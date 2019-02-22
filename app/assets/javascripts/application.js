@@ -17,3 +17,15 @@
 //= require forms
 //= require maps
 //= require tables
+//= require_self
+
+$(document).ready(
+    function(){
+        $('input:file').change(
+            function(){
+                if ($(this).val()) {
+                    $('input:submit').attr('disabled',false);
+                } 
+            }
+            );
+    });
