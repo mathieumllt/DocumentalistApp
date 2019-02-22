@@ -1,7 +1,8 @@
 <tr>
   <td><%= student.first_name %></td>
   <td><%= student.last_name %></td>
-  <td><%= student.birth_date %></td>
+  <td><%= student.birth_date.strftime('%d - %m - %y') %></td>
+  <td><%= student.updated_at.strftime('%d - %m - %y 🕒 %H:%M') %></td>
   <td><%= link_to "Voir", student_path(student.id), class: "btn btn-sm btn-outline-primary" %></td>
   <td>
     <%= link_to student_path(student), method: :delete, data: { confirm: "Cette action est irréversible, êtes vous sur ?"} do %>

@@ -5,9 +5,17 @@ module CsvManager
     def self.check(file); end
 
     def self.add_to_db(file)
-      CSV.foreach(file.path, headers: true) do |row|
-        Student.create! row.to_hash
+      CSV.foreach(file, headers: true) do |row|
+        Student.create row.to_hash
       end
+    end
+
+    def self.import_students(file)
+      new_student = []
+      CSV.foreach(file.path, headers: true) do |row|
+        new_student << row.to_hash
+      end
+      ImportCsvJob.perform_later(new_student)
     end
   end
 end

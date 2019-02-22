@@ -18,6 +18,7 @@
 									<th>Prénom</th>
 									<th>Nom</th>
 									<th>Date de naissance</th>
+									<th>Date de modification</th>
 									<th>Détails</th>
 									<th></th>
 								</tr>
@@ -28,13 +29,19 @@
 						</table>
 						<%= will_paginate @students, list_classes: %w(pagination justify-content-center) %>
 					</div>
-					<div><h4>Import that data!</h4>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4">
+				<div class="card">
+					<div class="card-header">
+						<h1 class="h3 mt-2">Importer une liste</h1>
+					</div>
+					<div class="card-body">
 						<%= form_tag import_students_path, multipart: true do %>
-							<%= file_field_tag :students_csv %>
-							<%= submit_tag "Import CSV" %>
+							<%= file_field_tag :students_csv, class: "mr-3 mb-3" %>
+							<%= submit_tag "Importer le CSV", class: "btn btn-primary btn-lg" %>
 						<% end %>
 					</div>
-
 				</div>
 			</div>
 		</div>
