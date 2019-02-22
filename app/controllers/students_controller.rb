@@ -32,9 +32,8 @@ class StudentsController < ApplicationController
   end
 
   def import
-    file = params[:students_csv]
     CsvManager::ImportStudent.check(params[:students_csv])
-    ImportCsvJob.perform_later file.tempfile.path
+    CsvManager::ImportStudent.import_students(params[:students_csv])
     redirect_to students_path, notice: "Activity Data imported!"
   end
 
