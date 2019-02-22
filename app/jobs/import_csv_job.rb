@@ -3,9 +3,13 @@
 class ImportCsvJob < ApplicationJob
   queue_as :default
 
-  def perform(row)
-    row.each do |line|
+  def import(students_array)
+    students_array.each do |line|
       Student.create! line
     end
+  end
+
+  def perform(students_array)
+    import(students_array)
   end
 end

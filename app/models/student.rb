@@ -15,4 +15,5 @@
 class Student < ApplicationRecord
   validates :first_name, presence: true, length: { in: 2..40 }
   validates :last_name, presence: true, length: { in: 2..40 }
+  validates :birth_date, presence: true, uniqueness: { scope: %i[first_name last_name] }
 end
