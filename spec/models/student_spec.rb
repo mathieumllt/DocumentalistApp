@@ -19,11 +19,13 @@ RSpec.describe Student, type: :model do
     build(:student)
   end
 
-  describe 'it is creatable' do
+  describe 'it is create a table' do
     let(:student) { create(:student) }
 
     it { expect(student.id).not_to be_nil }
     it { expect(student.first_name).not_to be_nil }
+    it { expect(student.last_name).not_to be_nil }
+    it { expect(student.birth_date).not_to be_nil }
   end
 
   describe 'Database' do
