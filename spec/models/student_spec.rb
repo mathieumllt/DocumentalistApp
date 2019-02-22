@@ -30,7 +30,7 @@ RSpec.describe Student, type: :model do
     it { is_expected.to have_db_column(:id).of_type(:integer) }
     it { is_expected.to have_db_column(:first_name).of_type(:string).with_options(null: false) }
     it { is_expected.to have_db_column(:last_name).of_type(:string).with_options(null: false) }
-    it { is_expected.to have_db_column(:birth_date).of_type(:date) }.with_options(null: false) }
+    it { is_expected.to have_db_column(:birth_date).of_type(:date).with_options(null: false) }
     it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
     it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
   end
