@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module CsvManager
-  class ServiceCheckCsv
-    def self.check; end
+  class CheckCsv
+    def self.check(file); end
   end
 end
