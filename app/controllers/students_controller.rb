@@ -32,7 +32,7 @@ class StudentsController < ApplicationController
   end
 
   def import
-    if params[:students_csv].content_type.include? "csv"
+    if valid_file(params[:students_csv])
       CsvManager::ImportStudent.add_to_db(params[:students_csv])
       flash[:notice] = "Import en cours, actualisez dans quelques secondes pour visualiser les changements"
     else
@@ -41,11 +41,17 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
-  def set_student
-    @student = Student.find(params[:id])
-  end
+  private
 
-  def student_params
-    params.require(:student).permit(:first_name, :last_name, :birth_date)
-  end
+    def set_student
+      @student = Student.find(params[:id])
+    end
+
+    def student_params
+      params.require(:student).permit(:first_name, :last_name, :birth_date)
+    end
+
+    def valid_file(file)
+      file.content_type.include? "csv"
+    end
 end
