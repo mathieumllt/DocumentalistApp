@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Worksession < ApplicationRecord
   validates :title, presence: true
   validates :period, presence: true, uniqueness: { scope: :date }

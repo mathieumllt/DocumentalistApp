@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Worksession, type: :model do
@@ -16,10 +18,10 @@ RSpec.describe Worksession, type: :model do
 
   describe 'Database' do
     it { is_expected.to have_db_column(:id).of_type(:integer) }
-    #it { is_expected.to have_db_column(:title).of_type(:string).with_options(null: false) }
+    # it { is_expected.to have_db_column(:title).of_type(:string).with_options(null: false) }
     it { is_expected.to have_db_column(:description).of_type(:text) }
-    #it { is_expected.to have_db_column(:date).of_type(:date).with_options(null: false) }
-    #it { is_expected.to have_db_column(:period).of_type(:string).with_options(null: false) }
+    # it { is_expected.to have_db_column(:date).of_type(:date).with_options(null: false) }
+    # it { is_expected.to have_db_column(:period).of_type(:string).with_options(null: false) }
     it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
     it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
   end

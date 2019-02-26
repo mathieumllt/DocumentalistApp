@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class WorksessionsController < ApplicationController
-  before_action :set_worksession, only: [:show, :edit, :update, :destroy]
+  before_action :set_worksession, only: %i[show edit update destroy]
 
   # GET /worksessions
   # GET /worksessions.json
@@ -9,8 +11,7 @@ class WorksessionsController < ApplicationController
 
   # GET /worksessions/1
   # GET /worksessions/1.json
-  def show
-  end
+  def show; end
 
   # GET /worksessions/new
   def new
@@ -18,8 +19,7 @@ class WorksessionsController < ApplicationController
   end
 
   # GET /worksessions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /worksessions
   # POST /worksessions.json
@@ -57,6 +57,7 @@ class WorksessionsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_worksession
       @worksession = Worksession.find(params[:id])
