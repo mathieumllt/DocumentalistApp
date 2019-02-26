@@ -5,8 +5,7 @@ module CsvManager
     def self.add_to_db(file)
       students_array = []
       CSV.foreach(file.path, headers: true) do |row|
-        stripped_hash = row.to_h.transform_values{ |v| v.gsub(/\s+/, '') }
-        students_array << stripped_hash
+        students_array << row.to_h.map{ |k, v| [k.gsub(/\s+/, ''), v.gsub(/\s+/, '')] }.to_h
       end
       ImportCsvJob.perform_later(students_array)
     end
