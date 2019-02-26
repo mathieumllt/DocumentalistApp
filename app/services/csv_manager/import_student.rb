@@ -2,8 +2,6 @@
 
 module CsvManager
   class ImportStudent
-    def self.check(file); end
-
     def self.add_to_db(file)
       students_array = []
       CSV.foreach(file.path, headers: true) do |row|
