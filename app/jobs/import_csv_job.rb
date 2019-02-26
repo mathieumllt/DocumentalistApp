@@ -5,7 +5,7 @@ class ImportCsvJob < ApplicationJob
 
   def import(students_array)
     students_array.each do |line|
-      Student.create! line
+      Student.create line
     end
   end
 
