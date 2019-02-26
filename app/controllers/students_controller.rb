@@ -32,8 +32,7 @@ class StudentsController < ApplicationController
   end
 
   def import
-    accepted_format = "csv"
-    if params[:students_csv].content_type.include? accepted_format
+    if params[:students_csv].content_type.include? "csv"
       CsvManager::ImportStudent.add_to_db(params[:students_csv])
       flash[:notice] = "Import en cours, actualisez dans quelques secondes pour visualiser les changements"
     else
