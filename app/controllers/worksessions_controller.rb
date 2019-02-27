@@ -47,6 +47,14 @@ class WorksessionsController < ApplicationController
     redirect_to worksessions_url, notice: 'Worksession was successfully destroyed.'
   end
 
+  # GET /worksessions/1/duplicate
+  def duplicate
+    original = Worksession.find(params[:worksession_id])
+    @worksession = original.dup
+    @worksession.skills = original.skills
+    render 'new'
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.

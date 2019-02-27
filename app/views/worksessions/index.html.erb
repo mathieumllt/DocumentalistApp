@@ -20,9 +20,10 @@
         <td><%= worksession.description %></td>
         <td><%= worksession.date %></td>
         <td><%= worksession.period %></td>
-        <td><%= link_to 'Show', worksession %></td>
-        <td><%= link_to 'Edit', edit_worksession_path(worksession) %></td>
-        <td><%= link_to 'Destroy', worksession, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Voir', worksession %></td>
+        <td><%= link_to 'Modifier', edit_worksession_path(worksession) %></td>
+        <td><%= link_to 'Dupliquer', worksession_duplicate_path(worksession) %></td>
+        <td><%= link_to 'Supprimer', worksession, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>
       </tr>
     <% end %>
   </tbody>
