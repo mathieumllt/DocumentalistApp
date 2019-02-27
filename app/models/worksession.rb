@@ -7,4 +7,6 @@ class Worksession < ApplicationRecord
 
   has_many :student_worksessions, dependent: :destroy
   has_many :students, through: :student_worksessions
+  has_many :skill_worksessions, dependent: :destroy
+  has_many :skills, through: :skill_worksessions
 end

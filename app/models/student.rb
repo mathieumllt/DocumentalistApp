@@ -19,4 +19,5 @@ class Student < ApplicationRecord
 
   has_many :student_worksessions, dependent: :destroy
   has_many :worksessions, through: :student_worksessions
+  has_many :skills, through: :worksessions
 end

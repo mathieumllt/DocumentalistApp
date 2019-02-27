@@ -36,7 +36,7 @@ RSpec.describe Worksession, type: :model do
   describe 'Associations' do
     it { is_expected.to have_many(:student_worksessions) }
     it { is_expected.to have_many(:students) }
-    it { is_expected.to have_many(:skill_workessions) }
+    it { is_expected.to have_many(:skill_worksessions) }
     it { is_expected.to have_many(:skills) }
   end
 end
