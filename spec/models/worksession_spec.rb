@@ -32,4 +32,11 @@ RSpec.describe Worksession, type: :model do
     it { is_expected.to validate_presence_of(:period) }
     it { is_expected.to validate_uniqueness_of(:period).scoped_to(:date) }
   end
+
+  describe 'Associations' do
+    it { is_expected.to have_many(:student_worksessions) }
+    it { is_expected.to have_many(:students) }
+    it { is_expected.to have_many(:skill_worksessions) }
+    it { is_expected.to have_many(:skills) }
+  end
 end

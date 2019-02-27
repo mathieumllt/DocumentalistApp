@@ -25,4 +25,10 @@ RSpec.describe Skill, type: :model do
   describe 'Validations' do
     it { is_expected.to validate_presence_of(:title) }
   end
+
+  describe 'Associations' do
+    it { is_expected.to have_many(:skill_worksessions) }
+    it { is_expected.to have_many(:worksessions) }
+    it { is_expected.to have_many(:students) }
+  end
 end
