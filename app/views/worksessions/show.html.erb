@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @worksession.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @worksession.description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @worksession.date %>
+</p>
+
+<p>
+  <strong>Period:</strong>
+  <%= @worksession.period %>
+</p>
+
+<%= link_to 'Edit', edit_worksession_path(@worksession) %> |
+<%= link_to 'Back', worksessions_path %>
