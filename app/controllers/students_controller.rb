@@ -34,11 +34,16 @@ class StudentsController < ApplicationController
   def import
     if valid_file(params[:students_csv])
       CsvManager::ImportStudent.add_to_db(params[:students_csv])
-      flash[:notice] = "Import en cours, actualisez dans quelques secondes pour visualiser les changements"
+      flash[:notice] = "Import en cours (#{ImportError.count} erreurs de formatage recontrées, consultez l'onglet Rapport d'importation pour plus de détails)"
     else
       flash[:alert] = "Le fichier doit être au format CSV!"
     end
     redirect_to students_path
+  end
+
+  def report
+    @import = ImportError.all
+    @formatage = ImportError.all.find_by(error_type: "Formatage")
   end
 
   private
