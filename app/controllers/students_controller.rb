@@ -43,7 +43,6 @@ class StudentsController < ApplicationController
 
   def report
     @import = ImportError.all
-    @formatage = ImportError.all.find_by(error_type: "Formatage")
   end
 
   private

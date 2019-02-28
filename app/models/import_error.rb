@@ -14,5 +14,5 @@
 #
 
 class ImportError < ApplicationRecord
-  serialize :line, Array
+  serialize :data_type, Array
 end

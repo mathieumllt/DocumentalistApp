@@ -14,6 +14,7 @@
 									<th></th>
 									<th></th>
 									<th></th>
+									<th></th>
 							</thead>
 							<thead>
 								<tr>
@@ -25,29 +26,30 @@
 								</tr>
 							</thead>
 							<tbody>
-							  <% @import.all.where(error_name: "Students").order(:data_type).each do |error| %>
+							  <% @import.all.where(error_name: "Students").order(:line).each do |error| %>
 								<tr>
 									<td>
-                                      <%= error.data_type %>
+                                      <%= error.line %>
+                                    </td>
 									<td>
-									  <% if error.line[0][1].nil? %>
+									  <% if error.data_type[0][1].nil? %>
 									    <%= "Vide" %>
 									  <% else %>
-									    <%= error.line[0][1] %>
+									    <%= error.data_type[0][1] %>
 									  <% end %>
 									</td>
                                     <td>
-									  <% if error.line[1][1].nil? %>
+									  <% if error.data_type[1][1].nil? %>
 									    <%= "Vide" %>
 									  <% else %>
-									    <%= error.line[1][1] %>
+									    <%= error.data_type[1][1] %>
 									  <% end %>
 									</td>
 									<td>
-									  <% if error.line[2][1].nil? %>
+									  <% if error.data_type[2][1].nil? %>
 									    <%= "Vide" %>
 									  <% else %>
-									    <%= error.line[2][1] %>
+									    <%= error.data_type[2][1] %>
 									  <% end %>
 									</td>
 									<td>
