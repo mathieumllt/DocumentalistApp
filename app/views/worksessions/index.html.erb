@@ -1,34 +1,36 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Worksessions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Period</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @worksessions.each do |worksession| %>
-      <tr>
-        <td><%= worksession.title %></td>
-        <td><%= worksession.description %></td>
-        <td><%= worksession.date %></td>
-        <td><%= worksession.period %></td>
-        <td><%= link_to 'Voir', worksession %></td>
-        <td><%= link_to 'Modifier', edit_worksession_path(worksession) %></td>
-        <td><%= link_to 'Dupliquer', worksession_duplicate_path(worksession) %></td>
-        <td><%= link_to 'Supprimer', worksession, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Worksession', new_worksession_path %>
+<main class="content">
+	<div class="container-fluid p-0">
+		<div class="row">
+			<div class="col-12 col-lg-8">
+				<div class="card animated fadeIn">
+					<div class="card-header d-flex justify-content-between">
+						<h1 class="h3 mt-2">Liste des séances</h1>
+						<div>
+							<%= link_to new_worksession_path, class: "btn btn-primary btn-lg" do %>
+								<i class="fas fa-user-plus"></i> Programmer une nouvelle séance
+							<% end %>
+						</div>
+					</div>
+					<div class="card-body">
+						<table id="datatables-basic" class="table table-striped" style="width:100%">
+							<thead>
+								<tr>
+									<th>Intitulé</th>
+									<th>Date</th>
+									<th>Période</th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+							  <%= render @worksessions %>
+							</tbody>
+						</table>
+						<%= will_paginate @worksessions, list_classes: %w(pagination justify-content-center) %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

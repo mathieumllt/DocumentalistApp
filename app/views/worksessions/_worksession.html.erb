@@ -1,0 +1,8 @@
+<tr>
+  <td><%= worksession.title %></td>
+  <td><%= worksession.date.strftime('%d - %m - %y') %></td>
+  <td><%= worksession.period %></td>
+  <td><%= link_to "Voir", worksession_path(worksession.id), class: "btn btn-sm btn-outline-primary" %></td>
+  <td><%= link_to 'Dupliquer', worksession_duplicate_path(worksession) %></td>
+  <td><%= link_to 'Supprimer', worksession, method: :delete, data: { confirm: 'Cette action est irréversible, êtes-vous sûr ?' } %></td>
+</tr>
