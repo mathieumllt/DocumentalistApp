@@ -6,13 +6,15 @@ module CsvManager
       ImportError.delete_all
       students_array = []
       errors = []
-      CSV.foreach(file.path, headers: true) do |row|
-        next errors << row.to_h if row.to_h.value?(nil)
+      CSV.foreach(file.path, headers: true).with_index(1) do |row, i|
+        puts "***********"
 
-        students_array << row.to_h.map{ |k, v| [k.gsub(/\s+/, ''), v.gsub(/\s+/, '').capitalize] }.to_h
+        next errors << [row.to_h, i] if row.to_h.value?(nil)
+
+        students_array << [row.to_h.map{ |k, v| [k.gsub(/\s+/, ''), v.gsub(/\s+/, '').capitalize] }.to_h, i]
       end
       errors.each do |error|
-        ImportError.create(line: error.to_a, error_name: "Students", data_type: "Elèves", error_type: "Formatage")
+        ImportError.create(line: error[0].to_a, error_name: "Students", data_type: error[1], error_type: "Formatage")
       end
       ImportCsvJob.perform_later(students_array)
     end

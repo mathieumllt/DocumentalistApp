@@ -17,6 +17,7 @@
 							</thead>
 							<thead>
 								<tr>
+									<th>Ligne</th>
 									<th>Prénom</th>
 									<th>Nom</th>
 									<th>Date de naissance</th>
@@ -24,8 +25,10 @@
 								</tr>
 							</thead>
 							<tbody>
-							  <% @import.all.where(error_name: "Students").each_with_index do |error,i| %>
+							  <% @import.all.where(error_name: "Students").order(:data_type).each do |error| %>
 								<tr>
+									<td>
+                                      <%= error.data_type %>
 									<td>
 									  <% if error.line[0][1].nil? %>
 									    <%= "Vide" %>
