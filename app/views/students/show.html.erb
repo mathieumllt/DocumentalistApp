@@ -20,8 +20,8 @@
 							</thead>
 							<thead>
 								<tr>
-									<th>Classe</th>
-									<th>Date d'intégration</th>
+									<th class = "not-working-yet">Classe</th>
+									<th>Date de création</th>
 									<th>Date de naissance</th>
 								</tr>
 							</thead>
@@ -39,20 +39,20 @@
 							</thead>
 							<thead>
 								<tr>
-									<th>Nombre de séances</th>
+									<th>Nombre de séances prévues</th>
 									<th>Absences</th>
-									<th>Dont justifiées</th>
+									<th class = "not-working-yet">Dont justifiées</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>11</td>
-									<td>4</td>
-									<td>3</td>
+									<td><%= @student.student_worksessions.count %></td>
+									<td><%= @student.student_worksessions.where("presence = 'false'").count %></td>
+									<td>0</td>
 								</tr>
 							</tbody>
 							<thead class="thead-dark">
-									<th><u>Livres:</u></th>
+									<th><u class = "not-working-yet">Livres:</u></th>
 									<th></th>
 									<th></th>
 							</thead>
@@ -77,8 +77,8 @@
 							</thead>
 							<thead>
 								<tr>
-									<th>Total sur la session</th>
-									<th>Minimum à acquérir</th>
+									<th class = "not-working-yet">Total sur la session</th>
+									<th class = "not-working-yet">Minimum à acquérir</th>
 									<th>Détails</th>
 								</tr>
 							</thead>
