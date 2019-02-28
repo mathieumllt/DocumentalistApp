@@ -1,20 +1,32 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Student.delete_all
+20.times do |i|
+  Student.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    birth_date: Faker::Date.birthday(10, 16)
+  )
+  p "student #{i} : créé"
+end
 
-# Student.delete_all
+Skill.delete_all
+10.times do |i|
+  Skill.create(
+    title: Faker::Educator.course_name,
+    description: Faker::TvShows::RuPaul.quote
+  )
+  p "skill #{i} : créé"
+end
 
-# 700.times do |i|
-#   Student.create!(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     birth_date: Faker::Date.birthday(10, 15),
-#   )
-#   puts "Student N°#{i + 1} created"
-# end
+# for the moment only 8slots of 55 minutes each.
+Worksession.delete_all
+10.times do |i|
+  Worksession.create(
+    title: Faker::App.name,
+    description: Faker::TvShows::RuPaul.quote,
+    date: Faker::Date.forward(10),
+    period: rand(1..8)
+  )
+  p "worksession #{i} : créé"
+end

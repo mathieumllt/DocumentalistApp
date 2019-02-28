@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Worksessions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Period</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @worksessions.each do |worksession| %>
+      <tr>
+        <td><%= worksession.title %></td>
+        <td><%= worksession.description %></td>
+        <td><%= worksession.date %></td>
+        <td><%= worksession.period %></td>
+        <td><%= link_to 'Voir', worksession %></td>
+        <td><%= link_to 'Modifier', edit_worksession_path(worksession) %></td>
+        <td><%= link_to 'Dupliquer', worksession_duplicate_path(worksession) %></td>
+        <td><%= link_to 'Supprimer', worksession, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Worksession', new_worksession_path %>

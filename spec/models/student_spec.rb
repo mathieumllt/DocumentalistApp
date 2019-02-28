@@ -44,4 +44,10 @@ RSpec.describe Student, type: :model do
     it { is_expected.to validate_length_of(:last_name).is_at_least(2).is_at_most(40) }
     it { is_expected.to validate_presence_of(:birth_date) }
   end
+
+  describe 'Associations' do
+    it { is_expected.to have_many(:student_worksessions) }
+    it { is_expected.to have_many(:worksessions) }
+    it { is_expected.to have_many(:skills) }
+  end
 end
