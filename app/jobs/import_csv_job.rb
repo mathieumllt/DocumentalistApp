@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ImportCsvJob < ApplicationJob
-  include Sidekiq::Worker
-  sidekiq_options backtrace: true
   queue_as :default
 
   def import(students_array)
