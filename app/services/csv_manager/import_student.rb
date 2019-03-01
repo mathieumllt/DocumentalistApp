@@ -11,9 +11,11 @@ module CsvManager
 
         students_array << [row.to_h.map{ |k, v| [k.gsub(/\s+/, ''), v.gsub(/\s+/, '').capitalize] }.to_h, i]
       end
+
       errors_array.each do |error|
         ImportError.create(line: error[1], error_name: "Students", data_type: error[0].to_a, error_type: "Formatage")
       end
+
       ImportCsvJob.perform_later(students_array)
     end
   end

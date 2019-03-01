@@ -27,39 +27,39 @@
 							</thead>
 							<tbody>
 							  <% @import.all.where(error_name: "Students").order(:line).each do |error| %>
-								<tr>
-									<td>
-                                      <%= error.line %>
-                                    </td>
-									<td>
-									  <% if error.data_type[0][1].nil? %>
-									    <%= "Vide" %>
-									  <% else %>
-									    <%= error.data_type[0][1] %>
-									  <% end %>
-									</td>
-                                    <td>
-									  <% if error.data_type[1][1].nil? %>
-									    <%= "Vide" %>
-									  <% else %>
-									    <%= error.data_type[1][1] %>
-									  <% end %>
-									</td>
-									<td>
-									  <% if error.data_type[2][1].nil? %>
-									    <%= "Vide" %>
-									  <% else %>
-									    <%= error.data_type[2][1] %>
-									  <% end %>
-									</td>
-									<td>
-									  <% if error.error_type == "Formatage" %>
-									    <b style="color:red"><%= "Champ manquant" %></b>
-									  <% else %>
-									    <b style="color:red"><%= "Doublon" %></b>
-									  <% end %>
-									</td>
-								</tr>
+  								<tr>
+  									<td>
+                      <%= error.line %>
+                    </td>
+  									<td>
+  									  <% if error.data_type[0][1].nil? %>
+  									    <%= "Vide" %>
+  									  <% else %>
+  									    <%= error.data_type[0][1] %>
+  									  <% end %>
+  									</td>
+                                      <td>
+  									  <% if error.data_type[1][1].nil? %>
+  									    <%= "Vide" %>
+  									  <% else %>
+  									    <%= error.data_type[1][1] %>
+  									  <% end %>
+  									</td>
+  									<td>
+  									  <% if error.data_type[2][1].nil? %>
+  									    <%= "Vide" %>
+  									  <% else %>
+  									    <%= error.data_type[2][1] %>
+  									  <% end %>
+  									</td>
+  									<td>
+  									  <% if error.error_type == "Formatage" %>
+  									    <b style="color:red"><%= "Champ manquant" %></b>
+  									  <% else %>
+  									    <b style="color:red"><%= "Doublon" %></b>
+  									  <% end %>
+  									</td>
+  								</tr>
 								<% end %>
 							</tbody>		
 						</table>
