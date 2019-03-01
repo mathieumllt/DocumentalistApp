@@ -32,17 +32,30 @@ class StudentsController < ApplicationController
   end
 
   def import
-    CsvManager::ImportStudent.check(params[:students_csv])
-    CsvManager::ImportStudent.add_to_db(params[:students_csv])
-    flash[:notice] = "Import en cours, actualisez dans quelques secondes pour visualiser les changements"
+    if valid_file(params[:students_csv])
+      CsvManager::ImportStudent.add_to_db(params[:students_csv])
+      flash[:notice] = "Import en cours (#{ImportError.count} erreurs de formatage rencontrées, consultez l'onglet Rapport d'importation pour plus de détails)"
+    else
+      flash[:alert] = "Le fichier doit être au format CSV!"
+    end
     redirect_to students_path
   end
 
-  def set_student
-    @student = Student.find(params[:id])
+  def report
+    @import = ImportError.all
   end
 
-  def student_params
-    params.require(:student).permit(:first_name, :last_name, :birth_date)
-  end
+  private
+
+    def set_student
+      @student = Student.find(params[:id])
+    end
+
+    def student_params
+      params.require(:student).permit(:first_name, :last_name, :birth_date)
+    end
+
+    def valid_file(file)
+      file.content_type.include? "csv"
+    end
 end

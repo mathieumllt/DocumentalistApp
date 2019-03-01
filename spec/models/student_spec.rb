@@ -7,7 +7,7 @@
 #  id         :bigint(8)        not null, primary key
 #  first_name :string           not null
 #  last_name  :string           not null
-#  birth_date :date
+#  birth_date :date             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -43,5 +43,11 @@ RSpec.describe Student, type: :model do
     it { is_expected.to validate_length_of(:first_name).is_at_least(2).is_at_most(40) }
     it { is_expected.to validate_length_of(:last_name).is_at_least(2).is_at_most(40) }
     it { is_expected.to validate_presence_of(:birth_date) }
+  end
+
+  describe 'Associations' do
+    it { is_expected.to have_many(:student_worksessions) }
+    it { is_expected.to have_many(:worksessions) }
+    it { is_expected.to have_many(:skills) }
   end
 end

@@ -38,7 +38,7 @@
 					</div>
 					<div class="card-body">
 						<%= form_tag import_students_path, multipart: true do %>
-							<%= file_field_tag :students_csv, class: "mr-3 mb-3" %>
+							<%= file_field_tag :students_csv, accept: 'text/csv', class: "mr-3 mb-3" %>
 							<%= submit_tag "Importer le CSV", disabled: true, class: "btn btn-primary btn-lg" %>
 						<% end %>
 					</div>
@@ -47,4 +47,3 @@
 		</div>
 	</div>
 </main>
-
