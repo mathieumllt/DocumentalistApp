@@ -6,7 +6,7 @@ class WorksessionsController < ApplicationController
   # GET /worksessions
   # GET /worksessions.json
   def index
-    @worksessions = Worksession.all
+    @worksessions = Worksession.order(updated_at: :desc).paginate(page: params[:page])
   end
 
   # GET /worksessions/1
