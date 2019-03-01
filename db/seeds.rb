@@ -17,7 +17,7 @@ nb_skills.times do |i|
     title: Faker::Educator.course_name,
     description: Faker::TvShows::RuPaul.quote
   )
-  p "skill #{i+1} : created"
+  p "skill #{i + 1} : created"
 end
 
 # Create students
@@ -28,7 +28,7 @@ nb_students.times do |i|
     last_name: Faker::Name.last_name,
     birth_date: Faker::Date.birthday(10, 16)
   )
-  p "student #{i+1} : created"
+  p "student #{i + 1} : created"
 end
 
 # Create worksessions
@@ -41,14 +41,14 @@ nb_worksessions.times do |i|
     period: rand(1..8)
   )
   # Add skills to worksession
-  rand(nb_min_skills_worksessions..nb_max_skills_worksessions).times do |j|
+  rand(nb_min_skills_worksessions..nb_max_skills_worksessions).times do |_j|
     w.skills << Skill.offset(rand(Skill.count)).first
-    p "added one skill to worksession #{i+1}"
+    p "added one skill to worksession #{i + 1}"
   end
   # Add students to worksession
-  rand(nb_min_students_worksessions..nb_max_students_worksessions).times do |j|
+  rand(nb_min_students_worksessions..nb_max_students_worksessions).times do |_j|
     w.students << Student.offset(rand(Student.count)).first
-    p "added one student to worksession #{i+1}"
+    p "added one student to worksession #{i + 1}"
   end
-  p "worksession #{i+1} : created"
+  p "worksession #{i + 1} : created"
 end
