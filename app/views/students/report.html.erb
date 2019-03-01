@@ -31,6 +31,8 @@
   									<td>
                       <%= error.line %>
                     </td>
+
+                    <!-- prénom -->
   									<td>
   									  <% if error.data_type[0][1].nil? %>
   									    <%= "Vide" %>
@@ -38,13 +40,17 @@
   									    <%= error.data_type[0][1] %>
   									  <% end %>
   									</td>
-                                      <td>
+
+                    <!-- nom -->
+                    <td>
   									  <% if error.data_type[1][1].nil? %>
   									    <%= "Vide" %>
   									  <% else %>
   									    <%= error.data_type[1][1] %>
   									  <% end %>
   									</td>
+
+                    <!-- date de naissance -->
   									<td>
   									  <% if error.data_type[2][1].nil? %>
   									    <%= "Vide" %>
@@ -52,6 +58,8 @@
   									    <%= error.data_type[2][1] %>
   									  <% end %>
   									</td>
+
+                    <!-- erreur -->
   									<td>
   									  <% if error.error_type == "Formatage" %>
   									    <b style="color:red"><%= "Champ manquant" %></b>
