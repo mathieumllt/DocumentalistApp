@@ -6,7 +6,7 @@ class ImportCsvJob < ApplicationJob
   def import(students_array)
     students_array.each do |row|
       student = Student.new(row[0])
-      student.save
+
       if !student.save
         ImportError.create(line: row[1], error_name: "Students", data_type: row[0].to_a, error_type: "Doublon")
       end
