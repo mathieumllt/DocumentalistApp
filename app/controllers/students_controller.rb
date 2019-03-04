@@ -41,10 +41,6 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
-  def report
-    @import = ImportError.all
-  end
-
   private
 
     def set_student
