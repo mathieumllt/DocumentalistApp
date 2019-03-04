@@ -16,4 +16,8 @@ class Student < ApplicationRecord
   validates :first_name, presence: true, length: { in: 2..40 }
   validates :last_name, presence: true, length: { in: 2..40 }
   validates :birth_date, presence: true, uniqueness: { scope: %i[first_name last_name] }
+
+  has_many :student_worksessions, dependent: :destroy
+  has_many :worksessions, through: :student_worksessions
+  has_many :skills, through: :worksessions
 end
