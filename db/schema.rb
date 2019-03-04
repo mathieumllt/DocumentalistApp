@@ -100,6 +100,13 @@ ActiveRecord::Schema.define(version: 2019_02_28_150200) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "templates", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "worksessions", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"

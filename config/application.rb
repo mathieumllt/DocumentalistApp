@@ -38,5 +38,7 @@ module DocumentalistApp
       g.helper false
       g.stylesheets false
     end
+
+    config.time_zone = 'Paris'
   end
 end
