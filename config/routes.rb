@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :students do
     collection { post :import }
   end
+  resources :student_worksessions, only: [:destroy]
   get 'report', to: 'students#report'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'students#index'
