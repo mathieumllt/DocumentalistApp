@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     collection { post :import }
   end
   resources :student_worksessions, only: [:destroy]
-  get 'report', to: 'students#report'
+  get 'report', to: 'home#report'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'students#index'
   get 'home/index', to: "home#index"
