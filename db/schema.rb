@@ -12,7 +12,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_228_150_200) do
+ActiveRecord::Schema.define(version: 2019_02_28_150200) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,7 +90,14 @@ ActiveRecord::Schema.define(version: 20_190_228_150_200) do
   create_table "students", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.date "birth_date", null: false
+    t.date "birth_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -115,4 +123,6 @@ ActiveRecord::Schema.define(version: 20_190_228_150_200) do
   add_foreign_key "skill_templates", "templates"
   add_foreign_key "skill_worksessions", "skills"
   add_foreign_key "skill_worksessions", "worksessions"
+  add_foreign_key "student_worksessions", "students"
+  add_foreign_key "student_worksessions", "worksessions"
 end
