@@ -1,9 +1,10 @@
+<div class="d-flex">
 <%= form_with(model: worksession, local: true) do |form| %>
   <% if worksession.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(worksession.errors.count, "error") %> prohibited this worksession from being saved:</h2>
+      <h4><%= pluralize(worksession.errors.count, "error") %> prohibited this worksession from being saved:</h4>
 
-      <ul>
+      <ul class="mb-4">
       <% worksession.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -11,24 +12,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group d-flex justify-content-between">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "ml-2 pl-2 form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group d-flex justify-content-between">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "ml-2 pl-2 form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group d-flex justify-content-between">
     <%= form.label :date %>
-    <%= form.date_select :date %>
+    <%= form.date_select :date, class: "ml-2 pl-2 form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group d-flex justify-content-between">
     <%= form.label :period %>
-    <%= form.text_field :period %>
+    <%= form.text_field :period, class: "ml-2 pl-2 form-control" %>
   </div>
 
   <h6 class="card-subtitle text-muted my-2">Compétences</h6>
@@ -58,6 +59,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary btn-lg mt-3' %>
   </div>
 <% end %>
+</div>
