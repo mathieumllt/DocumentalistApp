@@ -61,3 +61,12 @@ Template.delete_all
   )
   p "template #{i} : créé"
 end
+
+Template.delete_all
+10.times do |i|
+  Skill.create(
+    title: Faker::App.name,
+    description: Faker::TvShows::RuPaul.quote,
+  )
+  p "template #{i} : créé"
+end

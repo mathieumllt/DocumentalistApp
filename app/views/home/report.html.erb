@@ -16,6 +16,18 @@
 									<th></th>
 									<th></th>
 							</thead>
+
+							<% if @students_errors.count.zero? %>
+							<thead>
+							  <tr>
+							    <td>
+							      <b>Votre dernière importation ne concernait pas les élèves</b>
+						        </td>
+						      </tr>
+						    </thead>
+
+							<% else %>
+
 							<thead>
 								<tr>
 									<th>Ligne</th>
@@ -26,7 +38,7 @@
 								</tr>
 							</thead>
 							<tbody>
-							  <% @import.all.where(error_name: "Students").order(:line).each do |error| %>
+							  <% @students_errors.order(:line).each do |error| %>
   								<tr>
   									<td>
                       <%= error.line %>
@@ -61,14 +73,77 @@
   									</td>
   								</tr>
 								<% end %>
+								<% end %>
 							</tbody>		
 						</table>
 						<br>
+
+						<table id="datatables-basic" class="table table-striped" style="width:100%">
+							<thead class="thead-dark">
+									<th><u>Importation de compétences:</u></th>
+									<th></th>
+									<th></th>
+									<th></th>
+							</thead>
+
+							<% if @skills_errors.count.zero? %>
+							<thead>
+							  <tr>
+							    <td>
+							      <b>Votre dernière importation ne concernait pas les compétences</b>
+						        </td>
+						      </tr>
+						    </thead>
+						    
+							<% else %>
+
+							<thead>
+								<tr>
+									<th>Ligne</th>
+									<th>Titre</th>
+									<th>Description</th>
+									<th>Erreur</th>
+								</tr>
+							</thead>
+							<tbody>
+							  <% @skills_errors.order(:line).each do |error| %>
+  								<tr>
+  									<td>
+                      <%= error.line %>
+                    </td>
+  									<td>
+  									  <% if error.data_type[0][1].nil? %>
+  									    <%= "Vide" %>
+  									  <% else %>
+  									    <%= error.data_type[0][1] %>
+  									  <% end %>
+  									</td>
+                                      <td>
+  									  <% if error.data_type[1][1].nil? %>
+  									    <%= "Vide" %>
+  									  <% else %>
+  									    <%= error.data_type[1][1] %>
+  									  <% end %>
+  									</td>
+  									<td>
+  									  <% if error.error_type == "Formatage" %>
+  									    <b style="color:red"><%= "Champ manquant" %></b>
+  									  <% else %>
+  									    <b style="color:red"><%= "Doublon" %></b>
+  									  <% end %>
+  									</td>
+  								</tr>
+								<% end %>
+								<% end %>
+							</tbody>		
+						</table>
               <% if @import.first %>
                 <i>(Dernière importation faite le <%= @import.first.created_at %>)</i><br>
               <% end %>
 					</div>
 				</div>
+
+
 			</div>
 		</div> <!-- ROW -->
 	</div>
