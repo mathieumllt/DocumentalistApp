@@ -4,11 +4,13 @@ class ImportSkillJob < ApplicationJob
   queue_as :default
 
   def import(skill_array)
-    skill_array.each do |row|
-      skill = Skill.new(row[0])
+    skill_array.each do |row_and_index|
+      # row_and_index is the csv row and its associated line
+      skill = Skill.new(row_and_index[0])
       skill.save
       if !skill.save
-        ImportError.create(line: row[1], error_name: "Skills", data_type: row[0].to_a, error_type: "Doublon")
+        # if the worker fail to create a skill, we store the error with its associated error description
+        ImportError.create(line: row_and_index[1], error_name: "Skills", data_type: row_and_index[0].to_a, error_type: "Doublon")
       end
     end
   end
