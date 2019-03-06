@@ -67,12 +67,12 @@
   									<td>
   									  <% if error.error_type == "Formatage" %>
   									    <b style="color:red"><%= "Champ manquant" %></b>
-                    <!-- in db validations we forbid students with same birth date when they have the same first name and last name -->
-                    <% elsif error.error_type.include?("Birth date has already been taken") %>
-                      <b style="color:red">Doublon</b>
-                    <% elsif !error.error_type.nil? %>
-                      <b style="color:red"><%= error.error_type %></b>
-                    <% end %>
+                      <!-- in db validations we forbid students with same birth date when they have the same first name and last name -->
+                      <% elsif error.error_type.include?("Birth date has already been taken") %>
+                        <b style="color:red">Doublon</b>
+                      <% elsif !error.error_type.nil? %>
+                        <b style="color:red"><%= error.error_type %></b>
+                      <% end %>
   									</td>
   								</tr>
 								<% end %>
