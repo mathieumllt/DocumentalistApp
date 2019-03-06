@@ -31,6 +31,32 @@
     <%= form.text_field :period %>
   </div>
 
+  <h6 class="card-subtitle text-muted my-2">Compétences</h6>
+  <div class="form-check">
+    <div class="container">
+      <div class="row">
+        <%= form.collection_check_boxes(:skill_ids, Skill.all, :id, :title) do |b| %>
+          <div class="col-4">
+            <%= b.label(class: "form-check-label mx-1") { b.check_box + b.text } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <h6 class="card-subtitle text-muted my-2">Elèves</h6>
+  <div class="form-check">
+    <div class="container">
+      <div class="row">
+        <%= form.collection_check_boxes(:student_ids, Student.all, :id, :first_name) do |b| %>
+          <div class="col-4">
+            <%= b.label(class: "form-check-label mx-1") { b.check_box + b.text } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
