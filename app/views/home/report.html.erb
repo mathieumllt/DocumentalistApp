@@ -67,9 +67,9 @@
   									<td>
   									  <% if error.error_type == "Formatage" %>
   									    <b style="color:red"><%= "Champ manquant" %></b>
-  									  <% else %>
-  									    <b style="color:red"><%= "Doublon" %></b>
-  									  <% end %>
+                    <% elsif error.error_type != nil %>
+                      <b style="color:red"><%= error.error_type %></b>
+                    <% end %>
   									</td>
   								</tr>
 								<% end %>

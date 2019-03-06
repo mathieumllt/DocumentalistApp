@@ -4,11 +4,14 @@ class ImportCsvJob < ApplicationJob
   queue_as :default
 
   def import(students_array)
-    students_array.each do |row|
-      student = Student.new(row[0])
-      student.save
-      if !student.save
-        ImportError.create(line: row[1], error_name: "Students", data_type: row[0].to_a, error_type: "Doublon")
+    students_array.each do |student_and_index|
+      student = Student.new(student_and_index[0])
+
+      begin
+        student.save!
+      rescue StandardError => e
+        puts e
+        ImportError.create(line: student_and_index[1], error_name: "Students", data_type: student_and_index[0].to_a, error_type: e)
       end
     end
   end
