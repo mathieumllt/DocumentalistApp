@@ -9,7 +9,7 @@ module CsvManager
         ImportError.create(line: error[1], error_name: "Skills", data_type: error[0].to_a, error_type: "Formatage")
       end
       # Sends the array of valid skills to a job
-      ImportSkillJob.perform_later(skills_array)
+      ImportSkillsJob.perform_later(skills_array)
     end
   end
 end

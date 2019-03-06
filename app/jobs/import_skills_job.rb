@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ImportSkillJob < ApplicationJob
+class ImportSkillsJob < ApplicationJob
   queue_as :default
 
   def import(skill_array)
