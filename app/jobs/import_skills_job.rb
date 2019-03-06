@@ -10,7 +10,7 @@ class ImportSkillsJob < ApplicationJob
       skill.save
       if !skill.save
         # if the worker fail to create a skill, we store the error with its associated error description
-        ImportError.create(line: row_and_index[1], error_name: "Skills", data_type: row_and_index[0].to_a, error_type: "Doublon")
+        ImportError.create(line: row_and_index[1], error_entries: row_and_index[0].to_a, data_type: "Skills", error_type: "Doublon")
       end
     end
   end

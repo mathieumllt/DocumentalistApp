@@ -13,7 +13,7 @@ class ImportStudentsJob < ApplicationJob
       # if the worker fails to create a student, we store the error with its associated error description
       rescue StandardError => e
         puts e
-        ImportError.create(line: row_and_index[1], error_name: "Students", data_type: row_and_index[0].to_a, error_type: e)
+        ImportError.create(line: row_and_index[1], error_entries: row_and_index[0].to_a, data_type: "Students", error_type: e)
       end
     end
   end
