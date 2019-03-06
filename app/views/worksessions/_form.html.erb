@@ -11,47 +11,46 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="form-group d-flex justify-content-between">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "ml-2 pl-2 form-control" %>
-  </div>
-
-  <div class="form-group d-flex justify-content-between">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: "ml-2 pl-2 form-control" %>
-  </div>
-
-  <div class="form-group d-flex justify-content-between">
+  <div class="form-group mb-5 col-10">
     <%= form.label :date %>
     <%= form.date_select :date, class: "ml-2 pl-2 form-control" %>
   </div>
 
-  <div class="form-group d-flex justify-content-between">
+  <div class="form-group mb-5 col-10">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "ml-2 pl-2 form-control" %>
+  </div>
+
+  <div class="form-group mb-5 col-10">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "ml-2 pl-2 form-control" %>
+  </div>
+
+  <div class="form-group mb-5 col-2">
     <%= form.label :period %>
     <%= form.text_field :period, class: "ml-2 pl-2 form-control" %>
   </div>
 
-  <h6 class="card-subtitle text-muted my-2">Compétences</h6>
-  <div class="form-check">
-    <div class="container">
+  <h6 class="card-subtitle text-muted mb-4 mt-5 my-2">Compétences de la séance</h6>
+  <div class="form-check mb-5">
+    <div class="container col-10">
       <div class="row">
         <%= form.collection_check_boxes(:skill_ids, Skill.all, :id, :title) do |b| %>
           <div class="col-4">
-            <%= b.label(class: "form-check-label mx-1") { b.check_box + b.text } %>
+            <%= b.label(class: "form-check-label mx-1 mb-2") { b.check_box + b.text } %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 
-  <h6 class="card-subtitle text-muted my-2">Elèves</h6>
-  <div class="form-check">
-    <div class="container">
+  <h6 class="card-subtitle text-muted mb-4 my-2">Elèves de la séance</h6>
+  <div class="form-check mb-5">
+    <div class="container col-10">
       <div class="row">
         <%= form.collection_check_boxes(:student_ids, Student.all, :id, :first_name) do |b| %>
           <div class="col-4">
-            <%= b.label(class: "form-check-label mx-1") { b.check_box + b.text } %>
+            <%= b.label(class: "form-check-label mx-1 mb-2") { b.check_box + b.text } %>
           </div>
         <% end %>
       </div>
