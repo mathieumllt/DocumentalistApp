@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
   def report
     @import = ImportError.all
-    @skills_errors = @import.all.where(error_name: "Skills")
-    @students_errors = @import.all.where(error_name: "Students")
+    @skills_errors = @import.all.where(data_type: "Skills")
+    @students_errors = @import.all.where(data_type: "Students")
   end
 end
