@@ -2,21 +2,14 @@
 
 module CsvManager
   class ImportStudent
-    def self.add_to_db(file)
-      ImportError.delete_all
-      students_array = []
-      errors_array = []
-      CSV.foreach(file.path, headers: true).with_index(1) do |row, i|
-        next errors_array << [row.to_h, i] if row.to_h.value?(nil)
-
-        students_array << [row.to_h.map{ |k, v| [k.gsub(/\s+/, ''), v.gsub(/\s+/, '').capitalize] }.to_h, i]
-      end
-
+    def self.add_to_db(students_array, errors_array)
+      # Saves each line with errors in DB
       errors_array.each do |error|
-        ImportError.create(line: error[1], error_name: "Students", data_type: error[0].to_a, error_type: "Formatage")
+        # error is an array of the CSV line with errors and the number of the line ([[line], [line_number]])
+        ImportError.create(line: error[1], error_entries: error[0].to_a, data_type: "Students", error_type: "Formatage")
       end
-
-      ImportCsvJob.perform_later(students_array)
+      # Sends the array of valid students to a job
+      ImportStudentsJob.perform_later(students_array)
     end
   end
 end

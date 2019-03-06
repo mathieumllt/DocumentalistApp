@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_150200) do
+
+ActiveRecord::Schema.define(version: 2019_03_06_145242) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_150200) do
   end
 
   create_table "import_errors", force: :cascade do |t|
-    t.string "error_name", null: false
+    t.string "error_entries", null: false
     t.string "line", null: false
     t.string "error_type", null: false
     t.string "data_type", null: false
