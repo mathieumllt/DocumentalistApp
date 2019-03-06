@@ -7,7 +7,7 @@
 #  id         :bigint(8)        not null, primary key
 #  first_name :string           not null
 #  last_name  :string           not null
-#  birth_date :date
+#  birth_date :date             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
