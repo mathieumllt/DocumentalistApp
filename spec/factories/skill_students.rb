@@ -14,5 +14,7 @@
 
 FactoryBot.define do
   factory :skill_student do
+    skill { nil }
+    student { nil }
   end
 end
