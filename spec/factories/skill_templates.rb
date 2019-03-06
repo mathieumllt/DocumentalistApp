@@ -13,5 +13,7 @@
 
 FactoryBot.define do
   factory :skill_template do
+    skill { nil }
+    template { nil }
   end
 end

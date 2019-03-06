@@ -14,5 +14,5 @@
 #
 
 class ImportError < ApplicationRecord
-  serialize :data_type, Array
+  serialize :error_entries, Array
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_150200) do
+ActiveRecord::Schema.define(version: 2019_03_06_145242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_150200) do
   end
 
   create_table "import_errors", force: :cascade do |t|
-    t.string "error_name", null: false
+    t.string "error_entries", null: false
     t.string "line", null: false
     t.string "error_type", null: false
     t.string "data_type", null: false
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 2019_02_28_150200) do
   create_table "lists", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "skill_students", force: :cascade do |t|
+    t.bigint "skill_id"
+    t.bigint "student_id"
+    t.bigint "origin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_skill_students_on_skill_id"
+    t.index ["student_id"], name: "index_skill_students_on_student_id"
   end
 
   create_table "skill_templates", force: :cascade do |t|
@@ -88,14 +98,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_150200) do
   create_table "students", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.date "birth_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "templates", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.date "birth_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -117,6 +120,8 @@ ActiveRecord::Schema.define(version: 2019_02_28_150200) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "skill_students", "skills"
+  add_foreign_key "skill_students", "students"
   add_foreign_key "skill_templates", "skills"
   add_foreign_key "skill_templates", "templates"
   add_foreign_key "skill_worksessions", "skills"

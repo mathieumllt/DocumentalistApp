@@ -10,7 +10,7 @@ class StudentWorksessionsController < ApplicationController
 
   private
 
-  def set_student_worksession
-    @student_worksession = StudentWorksession.find(params[:id])
-  end
+    def set_student_worksession
+      @student_worksession = StudentWorksession.find(params[:id])
+    end
 end
