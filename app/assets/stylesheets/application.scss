@@ -14,6 +14,10 @@
  *= require_self
  */
 
+h1{
+  font-size: 1.3em;
+}
+
 .btn-group-lg>.btn,.btn-lg {
   padding: 0.50rem 1.2rem;
   font-size: 0.9rem;
@@ -66,10 +70,6 @@
   border-color: #130f40;
 }
 
-.card {
-  transition: 0.2s;
-}
-
 .card:hover {
   -webkit-box-shadow: 2px 2px 10px -1px rgba(0,0,0,0.29);
   -moz-box-shadow: 2px 2px 10px -1px rgba(0,0,0,0.29);
@@ -77,17 +77,31 @@
 }
 
 .card-header {
-  border-bottom: unset;
-}
-
-.card-header {
-  border-bottom-width: unset;
+  border-bottom-width: none;
+  border-bottom: none;
 }
 
 .card-footer {
-  border-top: unset;
+  border-top: none;
 }
 
 .not-working-yet {
   color: grey;
 }
+
+.table thead th {
+  border-bottom: none;
+  color: #7f858a;
+}
+
+.table .thead-dark th {
+  color: #495057;
+  background-color: transparent;
+  border: none;
+}
+
+u, ins {
+ text-decoration: none;
+}
+
+

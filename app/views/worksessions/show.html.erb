@@ -1,24 +1,45 @@
-<p id="notice"><%= notice %></p>
+<main class="content">
+	<div class="container-fluid p-0">
+		<div class="row">
+			<div class="col-12 col-lg-4">
+				<div class="card animated fadeIn">
+					<div class="card-header d-flex justify-content-between">
+						<h1 class="h3 mt-2">Séance</h1>
+					</div>
+					<div class="card-body">
+					<p>
+					  <strong>Title:</strong>
+					  <%= @worksession.title %>
+					</p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @worksession.title %>
-</p>
+					<p>
+					  <strong>Description:</strong>
+					  <%= @worksession.description %>
+					</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @worksession.description %>
-</p>
+					<p>
+					  <strong>Date:</strong>
+					  <%= @worksession.date %>
+					</p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @worksession.date %>
-</p>
-
-<p>
-  <strong>Period:</strong>
-  <%= @worksession.period %>
-</p>
-
-<%= link_to 'Edit', edit_worksession_path(@worksession) %> |
-<%= link_to 'Back', worksessions_path %>
+					<p>
+					  <strong>Period:</strong>
+					  <%= @worksession.period %>
+					</p>
+					</div>
+				</div>
+				<%= link_to 'Edit', edit_worksession_path(@worksession) %> 
+					<%= link_to 'Aller à la liste des séances', worksessions_path, class:"pl-3" %>
+			</div>
+			<div class="col-12 col-lg-8">
+				<div class="card animated fadeIn">
+					<div class="card-header d-flex justify-content-between">
+						<h1 class="h3 mt-2">Faire l'appel</h1>
+					</div>
+					<div class="card-body">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
