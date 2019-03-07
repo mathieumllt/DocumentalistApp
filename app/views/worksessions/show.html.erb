@@ -8,33 +8,63 @@
 					</div>
 					<div class="card-body">
 					<p>
-					  <strong>Title:</strong>
+					  <strong>Intitulé</strong>
 					  <%= @worksession.title %>
 					</p>
 
 					<p>
-					  <strong>Description:</strong>
+					  <strong>Description</strong>
 					  <%= @worksession.description %>
 					</p>
 
 					<p>
-					  <strong>Date:</strong>
+					  <strong>Date</strong>
 					  <%= @worksession.date %>
 					</p>
 
 					<p>
-					  <strong>Period:</strong>
+					  <strong>Periode</strong>
 					  <%= @worksession.period %>
 					</p>
+
+					<div>
+						<strong>Compétences associées</strong>
+						<ul>
+							<% @worksession.skills.each do |skill| %>
+								<li><%= skill.title %></li>
+							<% end %>
+						</ul>
+					</div>
+
+
 					</div>
 				</div>
-				<%= link_to 'Edit', edit_worksession_path(@worksession) %> 
+				<%= link_to 'Edit', edit_worksession_path(@worksession) %>
 					<%= link_to 'Aller à la liste des séances', worksessions_path, class:"pl-3" %>
 			</div>
+
 			<div class="col-12 col-lg-8">
 				<div class="card animated fadeIn">
 					<div class="card-header d-flex justify-content-between">
 						<h1 class="h3 mt-2">Faire l'appel</h1>
+						<h6 class="card-subtitle text-muted mb-4 my-2">Elèves de la séance</h6>
+
+						<%= form_with(model: @worksession, local: true) do |form| %>
+						  <div class="form-check mb-5">
+						    <div class="container col-10">
+						      <div class="row">
+						        <%= form.collection_check_boxes(:student_worksession_ids, @worksession.student_worksessions, :id, :presence) do |b| %>
+						          <div class="col-4">
+						            <%= b.label(class: "form-check-label mx-1 mb-2") { b.check_box + b.text } %>
+						          </div>
+						        <% end %>
+						      </div>
+						    </div>
+						  </div>
+							<div class="actions">
+								<%= form.submit class: 'btn btn-primary btn-lg mt-3' %>
+							</div>
+						<% end %>
 					</div>
 					<div class="card-body">
 					</div>
