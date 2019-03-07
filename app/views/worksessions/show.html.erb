@@ -1,4 +1,6 @@
 <main class="content">
+	<%= link_to 'Retourner à la liste des séances', worksessions_path, class:"pl-3" %>
+
 	<div class="container-fluid p-0">
 		<div class="row">
 			<div class="col-12 col-lg-4">
@@ -6,16 +8,10 @@
 					<div class="card-header d-flex justify-content-between">
 						<h1 class="h3 mt-2">Séance</h1>
 					</div>
-					<div class="card-body">
-						<p>
-							<strong>Intitulé</strong>
-							<%= @worksession.title %>
-						</p>
 
-						<p>
-							<strong>Description</strong>
-							<%= @worksession.description %>
-						</p>
+					<%= link_to 'Editer la séance', edit_worksession_path(@worksession) %>
+
+					<div class="card-body">
 
 						<p>
 							<strong>Date</strong>
@@ -27,6 +23,16 @@
 							<%= @worksession.period %>
 						</p>
 
+						<p>
+							<strong>Intitulé</strong>
+							<%= @worksession.title %>
+						</p>
+
+						<p>
+							<strong>Description</strong>
+							<%= @worksession.description %>
+						</p>
+
 						<div>
 							<strong>Compétences associées</strong>
 							<ul>
@@ -36,8 +42,6 @@
 							</ul>
 						</div>
 
-						<%= link_to 'Edit', edit_worksession_path(@worksession) %>
-						<%= link_to 'Aller à la liste des séances', worksessions_path, class:"pl-3" %>
 					</div>
 				</div>
 			</div>
@@ -54,6 +58,8 @@
 					<div class="card-header">
 						<h1 class="h3 mt-2">Elèves inscrits à la séance</h1>
 					</div>
+					<%= link_to "Editer la feuille d'appel", edit_worksession_path(@worksession) %>
+
 					<div class="card-body">
 						<table id="datatables-basic" class="table table-striped" style="width:100%">
 							<thead>
