@@ -3,14 +3,43 @@
 class StudentWorksessionsController < ApplicationController
   before_action :set_student_worksession, only: %i[destroy]
 
+  def roll_call
+    @student_worksessions = StudentWorksession.where(worksession_id: params[:id])
+    @worksession = Worksession.find(params[:id])
+  end
+
   def destroy
     @student_worksession.destroy
     redirect_back(fallback_location: root_path)
   end
 
+  def update
+    if params["student_worksession"].blank?
+      # display an error if form is validated without students selection
+      redirect_back fallback_location: worksessions_path, alert: "Vous devez sélectionner au moins un élève"
+      return
+    end
+
+    update_attendance("absent", "presence", false) if params["student_worksession"]["absent"].present?
+
+    redirect_to worksession_path(params[:id])
+  end
+
   private
+
+  def update_params
+    params.require(:student_worksession).permit(presence: [])
+  end
 
   def set_student_worksession
     @student_worksession = StudentWorksession.find(params[:id])
+  end
+
+  def update_attendance(params_key, column = params_key, value = true)
+    StudentWorksession.where(
+      id: params["student_worksession"][params_key]
+    ).find_each do |sws|
+      sws.update("#{column}": value)
+    end
   end
 end

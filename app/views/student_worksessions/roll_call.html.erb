@@ -1,0 +1,122 @@
+
+
+<div class="card">
+  <div class="card-header">
+    <h4>Appel des élèves</h4>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-sm table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Absence</th>
+        </tr>
+      </thead>
+
+
+
+    <!-- <%= form_with(model: sws, local: true) do |form|  %> -->
+
+
+      
+
+      <%= form_with url: update_worksession_roll_call_path, local: true do |f| %>
+      <tbody>
+      <% @student_worksessions.sort_by { |sws| sws.student.last_name }.each do |sws| %>
+        <tr>
+          <td><%= sws.student.last_name %></td>
+          <td><%= sws.student.first_name %></td>
+          <td><input type="checkbox" value="<%= sws.id %>" name="student_worksession[absent][]"></td>
+        </tr>
+      </tbody>
+
+      <% end %>
+    </table>
+  </div>
+
+  <div class="card-footer">
+    <%= f.submit 'Valider', class: "btn btn-primary mt-3 " %>
+    <%= link_to "Retour", worksession_path, class:"btn btn-info mt-3" %>
+  </div>
+<% end %>
+</div>
+
+
+
+
+
+
+<div class="col-12 col-lg-8">
+  <div class="card animated fadeIn">
+    <div class="card-header d-flex justify-content-between">
+      <h1 class="h3 mt-2">Faire l'appel</h1>
+      <h6 class="card-subtitle text-muted mb-4 my-2">Elèves de la séance</h6>
+
+      <%= form_with(model: @student_worksession, local: true) do |form| %>
+      <div class="form-check mb-5">
+        <div class="container col-10">
+          <div class="row">
+            <%= form.collection_check_boxes(:student_worksession_ids, @student_worksessions, :id, :presence) do |b| %>
+              <div class="col-4">
+                <%= b.label(class: "form-check-label mx-1 mb-2") { b.check_box + b.text } %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <%= form.submit class: 'btn btn-primary btn-lg mt-3' %>
+      </div>
+      <% end %>
+    </div>
+    <div class="card-body">
+    </div>
+  </div>
+</div>
+
+
+
+<main class="content">
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="card animated fadeIn">
+          <div class="card-header">
+            <h1 class="h3 mt-2">Faire l'appel</h1>
+          </div>
+          <div class="card-body">
+            <table id="datatables-basic" class="table table-striped" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Prénom</th>
+                  <th>Nom</th>
+                  <th>Présence</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @student_worksessions.each do |student_worksession| %>
+                <tr>
+                  <td><%= student_worksession.student.first_name %></td>
+                  <td><%= student_worksession.student.last_name %></td>
+                  <td><%= student_worksession.presence %><button class="btn btn-sm btn-outline-danger disabled">Absent</button></td>
+                  <td><%= link_to "Voir", student_path(student_worksession.student.id), class: "btn btn-sm btn-outline-primary" %></td>
+                  <td><%= link_to 'Désinscrire', student_worksession_path(student_worksession), method: :delete, data: { confirm: 'Cette action est irréversible, êtes-vous sûr ?' } %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <button class="btn btn-lg btn-outline-secondary disabled">+ Ajouter un élève</button>
+          </div>
+          <div class="card-footer">
+            <h6>Absent(s): <strong>3</strong></h6>
+            <button class="btn btn-lg btn-primary mt-2 mb-2 disabled">Valider</button>
+          </div>
+        </div>
+      </div>
+    </div> <!-- ROW -->
+  </div>
+</main>
