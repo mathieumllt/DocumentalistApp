@@ -1,37 +1,64 @@
+<div class="d-flex">
 <%= form_with(model: worksession, local: true) do |form| %>
   <% if worksession.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(worksession.errors.count, "error") %> prohibited this worksession from being saved:</h2>
+      <h4><%= pluralize(worksession.errors.count, "error") %> prohibited this worksession from being saved:</h4>
 
-      <ul>
+      <ul class="mb-4">
       <% worksession.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
+  <div class="form-group mb-5 col-10">
     <%= form.label :date %>
-    <%= form.date_select :date %>
+    <%= form.date_select :date, class: "ml-2 pl-2 form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group mb-5 col-10">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "ml-2 pl-2 form-control" %>
+  </div>
+
+  <div class="form-group mb-5 col-10">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "ml-2 pl-2 form-control" %>
+  </div>
+
+  <div class="form-group mb-5 col-2">
     <%= form.label :period %>
-    <%= form.text_field :period %>
+    <%= form.text_field :period, class: "ml-2 pl-2 form-control" %>
+  </div>
+
+  <h6 class="card-subtitle text-muted mb-4 mt-5 my-2">Compétences de la séance</h6>
+  <div class="form-check mb-5">
+    <div class="container col-10">
+      <div class="row">
+        <%= form.collection_check_boxes(:skill_ids, Skill.all, :id, :title) do |b| %>
+          <div class="col-4">
+            <%= b.label(class: "form-check-label mx-1 mb-2") { b.check_box + b.text } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <h6 class="card-subtitle text-muted mb-4 my-2">Elèves de la séance</h6>
+  <div class="form-check mb-5">
+    <div class="container col-10">
+      <div class="row">
+        <%= form.collection_check_boxes(:student_ids, Student.all, :id, :first_name) do |b| %>
+          <div class="col-4">
+            <%= b.label(class: "form-check-label mx-1 mb-2") { b.check_box + b.text } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary btn-lg mt-3' %>
   </div>
 <% end %>
+</div>

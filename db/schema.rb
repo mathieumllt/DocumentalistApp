@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_150200) do
+
+ActiveRecord::Schema.define(version: 2019_03_06_145242) do
+
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_150200) do
   end
 
   create_table "import_errors", force: :cascade do |t|
-    t.string "error_name", null: false
+    t.string "error_entries", null: false
     t.string "line", null: false
     t.string "error_type", null: false
     t.string "data_type", null: false
@@ -113,4 +116,6 @@ ActiveRecord::Schema.define(version: 2019_02_28_150200) do
   add_foreign_key "skill_templates", "templates"
   add_foreign_key "skill_worksessions", "skills"
   add_foreign_key "skill_worksessions", "worksessions"
+  add_foreign_key "student_worksessions", "students"
+  add_foreign_key "student_worksessions", "worksessions"
 end
