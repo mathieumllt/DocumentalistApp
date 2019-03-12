@@ -5,7 +5,6 @@ class StudentWorksessionsController < ApplicationController
 
   def roll_call
     @student_worksessions = StudentWorksession.where(worksession_id: params[:id])
-    @worksession = Worksession.find(params[:id])
   end
 
   def destroy
