@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Appel des élèves</h4>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-sm table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Absence</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+      <%= form_with url: update_worksession_roll_call_path, local: true do |f| %>
+
+        <% @student_worksessions.sort_by { |sw| sw.student.last_name }.each do |sw| %>
+          <%= hidden_field_tag('sw_ids[all][]', sw.id) -%>
+          <tr>
+            <td><%= sw.student.last_name %></td>
+            <td><%= sw.student.first_name %></td>
+            <td><%= check_box_tag name = 'sw_ids[absent][]', value = sw.id, checked = !sw.presence %>
+            <td><%= link_to "Voir", student_path(sw.student.id), class: "btn btn-sm btn-outline-primary" %></td>
+            <td><%= link_to 'Désinscrire', student_worksession_path(sw), method: :delete, data: { confirm: 'Cette action est irréversible, êtes-vous sûr ?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+
+
+    </table>
+  </div>
+
+  <div class="card-footer">
+    <%= f.submit 'Valider les modifications', class: "btn btn-primary mt-3 " %>
+    <%= link_to "Revenir à la séance", worksession_path, class:"btn btn-info mt-3" %>
+  </div>
+<% end %>
+</div>

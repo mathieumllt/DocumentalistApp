@@ -1,16 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
+  root 'students#index'
   resources :worksessions do
     get 'duplicate'
   end
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
   resources :students do
     collection { post :import }
   end
+  resources :student_worksessions, only: [:destroy]
   get 'report', to: 'home#report'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'students#index'
   get 'home/index', to: "home#index"
+  # Feature Appel
+  get 'worksessions/:id/roll_call', to: 'student_worksessions#roll_call', as: 'worksession_roll_call'
+  post 'worksessions/:id/roll_call', to: 'student_worksessions#update', as: 'update_worksession_roll_call'
 end
