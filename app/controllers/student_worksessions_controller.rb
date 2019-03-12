@@ -14,9 +14,9 @@ class StudentWorksessionsController < ApplicationController
 
   def update
     ws_array = params['sw_ids']['all']
-    if !params["sw_ids"]['absent'].blank?
+    if params["sw_ids"]['absent'].present?
       absent_array = params["sw_ids"]['absent']
-      ws_array = ws_array - absent_array
+      ws_array -= absent_array
       absent_array.each do |sw_id|
         sw = StudentWorksession.find(sw_id)
         sw.presence = false
@@ -33,11 +33,11 @@ class StudentWorksessionsController < ApplicationController
 
   private
 
-  def update_params
-    params.require(:student_worksession).permit(presence: [])
-  end
+    def update_params
+      params.require(:student_worksession).permit(presence: [])
+    end
 
-  def set_student_worksession
-    @student_worksession = StudentWorksession.find(params[:id])
-  end
+    def set_student_worksession
+      @student_worksession = StudentWorksession.find(params[:id])
+    end
 end

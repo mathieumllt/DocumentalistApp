@@ -65,6 +65,6 @@ class WorksessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def worksession_params
-      params.require(:worksession).permit(:title, :description, :date, :period, {:skill_ids => []}, {:student_ids => []})
+      params.require(:worksession).permit(:title, :description, :date, :period, { skill_ids: [] }, student_ids: [])
     end
 end
