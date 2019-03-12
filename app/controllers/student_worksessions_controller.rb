@@ -14,14 +14,21 @@ class StudentWorksessionsController < ApplicationController
   end
 
   def update
-    if params["student_worksession"].blank?
-      # display an error if form is validated without students selection
-      redirect_back fallback_location: worksessions_path, alert: "Vous devez sélectionner au moins un élève"
-      return
+    ws_array = params['sw_ids']['all']
+    if !params["sw_ids"]['absent'].blank?
+      absent_array = params["sw_ids"]['absent']
+      ws_array = ws_array - absent_array
+      absent_array.each do |sw_id|
+        sw = StudentWorksession.find(sw_id)
+        sw.presence = false
+        sw.save
+      end
     end
-
-    update_attendance("absent", "presence", false) if params["student_worksession"]["absent"].present?
-
+    ws_array.each do |sw_id|
+      sw = StudentWorksession.find(sw_id)
+      sw.presence = true
+      sw.save
+    end
     redirect_to worksession_path(params[:id])
   end
 
@@ -33,13 +40,5 @@ class StudentWorksessionsController < ApplicationController
 
   def set_student_worksession
     @student_worksession = StudentWorksession.find(params[:id])
-  end
-
-  def update_attendance(params_key, column = params_key, value = true)
-    StudentWorksession.where(
-      id: params["student_worksession"][params_key]
-    ).find_each do |sws|
-      sws.update("#{column}": value)
-    end
   end
 end

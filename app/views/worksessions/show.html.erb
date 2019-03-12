@@ -64,19 +64,19 @@
 						<table id="datatables-basic" class="table table-striped" style="width:100%">
 							<thead>
 								<tr>
-									<th>Prénom</th>
 									<th>Nom</th>
-									<th>Présence</th>
+									<th>Prénom</th>
+									<th>Absence</th>
 									<th></th>
 								</tr>
 							</thead>
 							<tbody>
-								<% @worksession.student_worksessions.each do |student_worksession| %>
+								<% @worksession.student_worksessions.sort_by { |sw| sw.student.last_name }.each do |sw| %>
 									<tr>
-										<td><%= student_worksession.student.first_name %></td>
-										<td><%= student_worksession.student.last_name %></td>
-										<td><%= student_worksession.presence %></td>
-										<td><%= link_to "Voir", student_path(student_worksession.student.id), class: "btn btn-sm btn-outline-primary" %></td>
+										<td><%= sw.student.last_name %></td>
+										<td><%= sw.student.first_name %></td>
+										<td><%= 'x' if !sw.presence %></td>
+										<td><%= link_to "Voir", student_path(sw.student.id), class: "btn btn-sm btn-outline-primary" %></td>
 									</tr>
 								<% end %>
 							</tbody>
