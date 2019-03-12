@@ -34,6 +34,7 @@ class WorksessionsController < ApplicationController
   # PATCH/PUT /worksessions/1
   # PATCH/PUT /worksessions/1.json
   def update
+    puts "in update, params : #{worksession_params}"
     if @worksession.update(worksession_params)
       redirect_to @worksession, notice: 'Worksession was successfully updated.'
     else
@@ -64,6 +65,6 @@ class WorksessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def worksession_params
-      params.require(:worksession).permit(:title, :description, :date, :period)
+      params.require(:worksession).permit(:title, :description, :date, :period, {:skill_ids => []}, {:student_ids => []})
     end
 end
