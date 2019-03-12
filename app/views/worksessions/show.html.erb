@@ -1,15 +1,17 @@
-<main class="content">
-	<%= link_to 'Retourner à la liste des séances', worksessions_path, class:"pl-3" %>
 
-	<div class="container-fluid p-0">
+<main class="content">
+	<%= link_to 'Retourner à la liste des séances', worksessions_path, class:"mt-5" %>
+
+	<div class="container-fluid p-0 mt-3">
 		<div class="row">
 			<div class="col-12 col-lg-4">
 				<div class="card animated fadeIn">
 					<div class="card-header d-flex justify-content-between">
 						<h1 class="h3 mt-2">Séance</h1>
+						<%= link_to 'Editer la séance', edit_worksession_path(@worksession), class:"mt-2" %>
 					</div>
 
-					<%= link_to 'Editer la séance', edit_worksession_path(@worksession) %>
+					
 
 					<div class="card-body">
 
@@ -37,7 +39,7 @@
 							<strong>Compétences associées</strong>
 							<ul>
 								<% @worksession.skills.each do |skill| %>
-								<li><%= skill.title %></li>
+								<li class="mt-2"><%= skill.title %></li>
 								<% end %>
 							</ul>
 						</div>
@@ -45,21 +47,12 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</main>
-
-
-<main class="content">
-	<div class="container-fluid p-0">
-		<div class="row">
 			<div class="col-12 col-lg-8">
 				<div class="card animated fadeIn">
-					<div class="card-header">
+					<div class="card-header d-flex justify-content-between">
 						<h1 class="h3 mt-2">Elèves inscrits à la séance</h1>
+						<%= link_to "Editer la feuille d'appel", worksession_roll_call_path(@worksession), class:"mt-2" %>
 					</div>
-					<%= link_to "Editer la feuille d'appel", worksession_roll_call_path(@worksession) %>
-
 					<div class="card-body">
 						<table id="datatables-basic" class="table table-striped" style="width:100%">
 							<thead>
@@ -84,6 +77,6 @@
 					</div>
 				</div>
 			</div>
-		</div> <!-- ROW -->
+		</div>
 	</div>
 </main>
