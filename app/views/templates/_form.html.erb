@@ -1,0 +1,29 @@
+<div class="d-flex">
+<%= form_with(model: template, local: true) do |form| %>
+  <% if template.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(template.errors.count, "error") %> prohibited this template from being saved:</h4>
+
+      <ul class="mb-4">
+      <% template.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mb-5 col-10">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "ml-2 pl-2 form-control" %>
+  </div>
+
+  <div class="form-group mb-5 col-10">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "ml-2 pl-2 form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary btn-lg mt-3' %>
+  </div>
+<% end %>
+</div>

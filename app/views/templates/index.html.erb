@@ -1,0 +1,39 @@
+<main class="content">
+	<div class="container-fluid p-0">
+		<div class="row">
+			<div class="col-12 col-lg-8">
+				<div class="card animated fadeIn">
+					<div class="card-header d-flex justify-content-between">
+						<h1 class="h3 mt-2">Liste des templates</h1>
+						<div>
+							<%= link_to new_template_path, class: "btn btn-primary btn-lg" do %>
+								<i class="fas fa-user-plus"></i> Programmer un nouveau template
+							<% end %>
+						</div>
+					</div>
+					<div class="card-body">
+						<table id="datatables-basic" class="table table-striped" style="width:100%">
+							<thead>
+								<tr>
+									<th>Intitulé</th>
+									<th>Date</th>
+									<th>Période</th>
+									<th></th>
+									<th></th>
+									<th></th>
+                  <% @templates.each do |f| %>
+                  <th><%= f.collection_select :template, @templates.all, :title, :description, { class: 'chosen-select'} %></th>
+                  <% end %>
+								</tr>
+							</thead>
+							<tbody>
+							  <%= render @templates %>
+							</tbody>
+						</table>
+						<%= will_paginate @templates, list_classes: %w(pagination justify-content-center) %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
