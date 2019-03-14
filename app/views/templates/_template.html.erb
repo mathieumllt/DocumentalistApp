@@ -1,0 +1,6 @@
+<tr>
+  <td><%= template.title %></td>
+  <td><%= link_to "Voir", template_path(template.id), class: "btn btn-sm btn-outline-primary" %></td>
+  <td><%= link_to 'Dupliquer', template_duplicate_path(template) %></td>
+  <td><%= link_to 'Supprimer', template, method: :delete, data: { confirm: 'Cette action est irréversible, êtes-vous sûr ?' } %></td>
+</tr>

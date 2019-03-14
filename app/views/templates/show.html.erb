@@ -1,0 +1,31 @@
+<main class="content">
+	<%= link_to 'Retourner à la liste des séances', templates_path, class:"pl-3" %>
+
+	<div class="container-fluid p-0">
+		<div class="row">
+			<div class="col-12 col-lg-4">
+				<div class="card animated fadeIn">
+					<div class="card-header d-flex justify-content-between">
+						<h1 class="h3 mt-2">Séance</h1>
+					</div>
+
+					<%= link_to 'Editer la séance', edit_template_path(@template) %>
+
+					<div class="card-body">
+
+						<p>
+							<strong>Intitulé</strong>
+							<%= @template.title %>
+						</p>
+
+						<p>
+							<strong>Description</strong>
+							<%= @template.description %>
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

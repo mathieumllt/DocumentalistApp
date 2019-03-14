@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :students do
     collection { post :import }
   end
+  resources :templates do
+    get 'duplicate'
+  end
   resources :student_worksessions, only: [:destroy]
   get 'report', to: 'home#report'
   get 'home/index', to: "home#index"
