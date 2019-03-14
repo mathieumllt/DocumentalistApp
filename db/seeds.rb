@@ -20,13 +20,24 @@ nb_skills.times do |i|
   p "skill #{i + 1} : created"
 end
 
+Group.destroy_all
+10.times do |i|
+  Group.create!(
+    name: Faker::Company.name,
+  )
+  p "group #{i} : créé"
+end
+
 # Create students
 Student.destroy_all
+groups = []
 nb_students.times do |i|
+  groups << Group.all.sample
   Student.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    birth_date: Faker::Date.birthday(10, 16)
+    birth_date: Faker::Date.birthday(10, 16),
+    groups: groups
   )
   p "student #{i + 1} : created"
 end

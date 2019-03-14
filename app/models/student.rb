@@ -20,4 +20,6 @@ class Student < ApplicationRecord
   has_many :student_worksessions, dependent: :destroy
   has_many :worksessions, through: :student_worksessions
   has_many :skills, through: :worksessions
+  has_many :group_students, dependent: :destroy
+  has_many :groups, through: :group_students
 end
